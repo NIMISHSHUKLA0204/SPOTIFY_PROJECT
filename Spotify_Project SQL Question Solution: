@@ -1,0 +1,162 @@
+
+-- create table
+CREATE TABLE Spotify_project (
+    artist VARCHAR(255),
+    track VARCHAR(255),
+    album VARCHAR(255),
+    album_type VARCHAR(50),
+    danceability FLOAT,
+    energy FLOAT,
+    loudness FLOAT,
+    speechiness FLOAT,
+    acousticness FLOAT,
+    instrumentalness FLOAT,
+    liveness FLOAT,
+    valence FLOAT,
+    tempo FLOAT,
+    duration_min FLOAT,
+    title VARCHAR(255),
+    channel VARCHAR(255),
+    views FLOAT,
+    likes BIGINT,
+    comments BIGINT,
+    licensed BOOLEAN,
+    official_video BOOLEAN,
+    stream BIGINT,
+    energy_liveness FLOAT,
+    most_played_on VARCHAR(50)
+); 
+use spotify_data
+select * from spotify_data;
+
+-- Beginner
+-- 1. Retrieve all columns for tracks by the artist "Gorillaz"
+
+select * from spotify_data where artist='Gorillaz';
+
+
+-- 2.	List the distinct album types available in the dataset
+
+select distinct(album) from spotify_data;
+
+
+-- 3.	Find the total number of tracks in the dataset
+
+
+select sum(track) as Total_Track from spotify_data;
+
+
+
+-- 4.	Retrieve the top 5 tracks with the highest number of views
+
+select track,
+max(views) as Highest_views 
+from spotify_data 
+group by track 
+limit 5;
+
+
+-- 5.	Find the number of tracks with a "TRUE" value for official_video
+
+
+select count(track) AS Official_video_track 
+from spotify_data
+where official_video='TRUE';
+
+
+-- Intermediate
+-- 6.	Calculate the average danceability score of all tracks
+
+select avg(Danceability) as Average_Danceability from spotify_data;
+
+
+
+
+-- 7.	Retrieve the album and track name of the longest track (by Duration_min).
+
+select album,
+track,
+Duration_min
+ from spotify_data 
+ order by Duration_min desc
+ limit 1;
+
+
+-- 8.	Find the artist with the most tracks in the dataset.
+
+select artist ,
+ max(track) as Most_played_track 
+ from spotify_data
+ group by artist;
+ 
+ 
+ --  9.	Get the top 3 most liked songs along with their artists
+ 
+ select	artist,max(likes) as most_likes
+ from spotify_data 
+ group by Artist
+ order by most_likes
+ limit 3;
+ 
+ -- Advance
+ --  10.	List the top 5 albums with the highest total number of streams.
+ 
+ select	album,max(stream) as most_stream
+ from spotify_data
+ group by Album
+ order by most_stream desc
+ limit 5;
+ 
+ 
+ --  11.	Use with clause to calculate the difference between the highest and the lowest energy values for each tracks in each album.
+ 
+ WITH cte
+AS
+(SELECT 
+	album,
+	MAX(energy) as highest_energy,
+	MIN(energy) as lowest_energery
+FROM spotify
+GROUP BY 1
+)
+SELECT 
+	album,
+	highest_energy - lowest_energery as energy_diff
+FROM cte
+ORDER BY 2 DESC;
+  
+ --  12.	Retrieve the top 5 artists whose tracks have the highest average Valence (happiness).
+ 
+SELECT Artist, AVG(Valence) AS avg_valence 
+FROM spotify_data 
+GROUP BY Artist 
+ORDER BY avg_valence DESC 
+LIMIT 5;
+
+ 
+ -- 13.	Rank all tracks based on their Views, using the RANK() function.
+ 
+ SELECT Track, Artist, Views, 
+       RANK() OVER (ORDER BY Views DESC) AS rank_position
+FROM spotify_data;
+
+ 
+--  14.	Identify the platform (most_playedon) with the highest total number of streams.
+
+select most_playedon, sum(Stream) as Total_streams
+from spotify_data
+group by most_playedon
+order by Total_streams desc
+limit 1;
+
+
+--  15.	Create a query to categorize songs into "Low," "Medium," and "High" popularity based on the number 
+--  of streams (e.g., Low: <10M, Medium: 10M-100M, High: >100M).
+
+select track,
+case 
+when stream < 10000000 then "Low"
+when stream between 10000000 and 100000000 then "Medium"
+when stream >100000000 then "High"
+end as stream_categories
+from spotify_data;

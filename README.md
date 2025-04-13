@@ -1,60 +1,94 @@
-# SPOTFY_PROJECT with SQL
-## Overview
-This repository contains SQL queries and data analysis for a music dataset. The dataset includes details about tracks, artists, albums, and popularity metrics such as views, likes, streams, and various audio features.
-## Dataset
-The dataset consists of the following key columns:
-•	Artist: Name of the artist
-•	Track: Track title
-•	Album: Album name
-•	Album_type: Type of album (e.g., single, album)
-•	Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo: Audio features
-•	Duration_min: Duration of the track in minutes
-•	Views, Likes, Comments, Stream: Popularity metrics
-•	Licensed, official_video: Boolean values indicating licensing and official video availability
-•	most_playedon: The platform where the song is most played
-## DATA SOURCE 
-Data source used for this project was taken from Kaggle :[spotify] (https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
-## SQL Queries
-The repository includes SQL queries categorized by difficulty level:
-Beginner
-1.	Retrieve all columns for tracks by a specific artist.
-2.	List distinct album types in the dataset.
-3.	Count the total number of tracks.
-4.	Get the top 5 tracks with the highest views.
-5.	Count the number of tracks with an official video.
-Intermediate
-6.	Calculate the average danceability score.
-7.	Find the longest track by duration.
-8.	Identify the artist with the most tracks.
-9.	Retrieve the top 3 most liked songs.
-10.	List the top 5 albums with the highest total streams.
-Advanced
-11.	Use a with clause to calculate the difference between the highest and the lowest energy value for tracks in each album.
-12.	Find the top 5 artists with the highest average valence.
-13.	Rank tracks based on views using the RANK() function.
-14.	Identify the platform with the highest total streams.
-15.	Categorize songs into Low, Medium, and High popularity based on streams.
-## Tools and Techniques
-Microsoft Excel:
-. Data cleaning and formatting.
-. Removing duplicate values and null values.
-. Arranging cleaned and ordered data.
-MySQL:
-. Transforming data from excel into MySQL and make required changes .
-. Gaining insights and data exploration . 
-. Using various aggregations , filters ,  basic queries and complex queries .
+# 🎧 Spotify SQL Project
 
-## Requirements
-•	Microsoft Excel
-•	MySQL or any compatible SQL database
-•	Microsoft Power Point 
-## Conclusion
-. There are 231 distinct album with total 54 tracks.
-. The Feel Good Inc. the track with highest number of views.
-. The Average Danceability for all tracks is 0.645 approx.
-. Longest track by duration minute is master of puppets(Remastered) with 8.58 minute.
-. The artist with most tracks is Gorillaz with 10 tracks and artist with most likes is Beyonca.
-. The most streamed songs are lovely , memories , The Eminem Show , etc.
-. The track with most views is X and the artist is Nicky Jam.
-. The most loved and played platform is Spotify.
+## 📌 Overview
+
+This project focuses on data exploration and analysis of a Spotify dataset using **SQL** and **Microsoft Excel**. The dataset includes detailed information on tracks, artists, albums, audio features, and popularity metrics such as views, likes, streams, and more.
+
+---
+
+## 📊 Dataset Description
+
+The dataset contains the following key columns:
+
+- **Artist**: Name of the artist  
+- **Track**: Track title  
+- **Album**: Album name  
+- **Album_type**: Type of album (e.g., single, album)  
+- **Audio Features**: Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo  
+- **Duration_min**: Track duration in minutes  
+- **Popularity Metrics**: Views, Likes, Comments, Streams  
+- **Licensed**, **Official_video**: Boolean values indicating licensing and video availability  
+- **Most_playedon**: Platform where the song is most streamed  
+
+---
+
+## 🔗 Data Source
+
+- Dataset: [Spotify Dataset on Kaggle](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
+
+---
+
+## 💡 SQL Queries Breakdown
+
+### 🟢 Beginner Level
+- Retrieve all columns for tracks by a specific artist  
+- List distinct album types  
+- Count the total number of tracks  
+- Top 5 tracks with the highest views  
+- Count of tracks with an official video  
+
+### 🟡 Intermediate Level
+- Average danceability score  
+- Longest track by duration  
+- Artist with the most tracks  
+- Top 3 most liked songs  
+- Top 5 albums by total streams  
+
+### 🔴 Advanced Level
+- Use `WITH` clause to calculate energy difference by album  
+- Top 5 artists with highest average valence  
+- Rank tracks using `RANK()` based on views  
+- Platform with highest total streams  
+- Categorize songs into Low, Medium, High popularity (based on streams)  
+
+---
+
+## 🛠 Tools & Technologies
+
+- **Microsoft Excel**:  
+  - Data cleaning  
+  - Handling missing/duplicate values  
+  - Formatting and structuring data  
+
+- **MySQL**:  
+  - Importing dataset from Excel  
+  - Writing SQL queries (basic to advanced)  
+  - Data analysis and insights extraction  
+
+- **Microsoft PowerPoint** (Optional):  
+  - Visual presentation of insights  
+
+---
+
+## 🧾 Requirements
+
+- Microsoft Excel  
+- MySQL or any SQL-compatible DBMS  
+- (Optional) Microsoft PowerPoint  
+
+---
+
+## 📈 Project Highlights
+
+- Total of **231 albums** and **54 tracks** analyzed  
+- **"Feel Good Inc."** holds the highest number of views  
+- Average **danceability**: ~0.645  
+- Longest track: **"Master of Puppets (Remastered)"** - 8.58 minutes  
+- Artist with most tracks: **Gorillaz** (10 tracks)  
+- Most liked artist: **Beyoncé**  
+- Most streamed songs include: *Lovely*, *Memories*, *The Eminem Show*, etc.  
+- Most viewed track: **"X"** by **Nicky Jam**  
+- Most popular platform: **Spotify**
+
+---
 
